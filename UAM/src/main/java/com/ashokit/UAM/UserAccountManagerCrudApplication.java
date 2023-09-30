@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class UserAccountManagerCrudApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UserAccountManagerCrudApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UserAccountManagerCrudApplication.class, args);
+    }
 
 }

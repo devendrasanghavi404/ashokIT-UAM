@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "userName": "dev799",
+  "firstName": "Devendra",
+  "lastName": "Sanghavi",
+  "email": "devendra@gmail.com",
+  "passKey": "1234",
+  "phoneNumber": 7745843267,
+  "birthDate": "1995-10-07T00:27:48.013+00:00",
+  "isActive": true,
+  "createdAt": "2023-09-30",
+  "updatedAt": "2023-09-30"
+}
