@@ -1,10 +1,10 @@
 package com.ashokit.UAM.model;
 
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 

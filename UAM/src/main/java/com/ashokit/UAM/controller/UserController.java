@@ -5,21 +5,17 @@ import com.ashokit.UAM.exceptions.DuplicateUserException;
 import com.ashokit.UAM.exceptions.UserNotFoundException;
 import com.ashokit.UAM.model.UserEntity;
 import com.ashokit.UAM.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v1/api/users")
+@RequestMapping("/v1/api")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
-
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping("/user")
     public ResponseEntity<Object> createUser(@RequestBody UserDTO userDTO) {
@@ -39,6 +35,17 @@ public class UserController {
         } catch (UserNotFoundException ex) {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping("user/")
+    public ResponseEntity<String> changeUserStatus(@RequestParam Long id, @RequestParam String status){
+        boolean result = userService.updateUserAccStatus(id,status);
+        return result ? ResponseEntity.ok("updated") : ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping(path = "/user/{id}")
+    public ResponseEntity<Object> deleteUser(@PathVariable Long id){
+        return ResponseEntity.ok(userService.deleteUserAccount(id));
     }
 
 }
