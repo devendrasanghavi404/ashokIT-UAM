@@ -12,7 +12,7 @@ public interface UserService {
 
     List<UserEntity> fetchAllUsers();
 
-    UserEntity deleteUserAcc(Long id);
+    boolean deleteUserAccount(Long id);
 
     boolean updateUserAccStatus(Long id, String status);
 
