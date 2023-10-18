@@ -40,18 +40,18 @@ public class UserController {
     }
 
     @GetMapping(path = "/user")
-    public ResponseEntity<List<UserEntity>> showAllUsers(){
+    public ResponseEntity<List<UserEntity>> showAllUsers() {
         return ResponseEntity.ok(userService.fetchAllUsers());
     }
 
     @PutMapping("/user/{id}")
-    public ResponseEntity<String> changeUserStatus(@PathVariable Long id, @RequestParam String status){
-        boolean result = userService.updateUserAccStatus(id,status);
+    public ResponseEntity<String> changeUserStatus(@PathVariable Long id, @RequestParam String status) {
+        boolean result = userService.updateUserAccStatus(id, status);
         return result ? ResponseEntity.ok("updated") : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping(path = "/user/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id){
+    public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
         return ResponseEntity.ok(userService.deleteUserAccount(id));
     }
 
