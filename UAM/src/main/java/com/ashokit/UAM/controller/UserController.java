@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/api")
 @RequiredArgsConstructor
@@ -37,14 +39,19 @@ public class UserController {
         }
     }
 
-    @PutMapping("user/")
-    public ResponseEntity<String> changeUserStatus(@RequestParam Long id, @RequestParam String status){
-        boolean result = userService.updateUserAccStatus(id,status);
+    @GetMapping(path = "/user")
+    public ResponseEntity<List<UserEntity>> showAllUsers() {
+        return ResponseEntity.ok(userService.fetchAllUsers());
+    }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<String> changeUserStatus(@PathVariable Long id, @RequestParam String status) {
+        boolean result = userService.updateUserAccStatus(id, status);
         return result ? ResponseEntity.ok("updated") : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping(path = "/user/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id){
+    public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
         return ResponseEntity.ok(userService.deleteUserAccount(id));
     }
 
